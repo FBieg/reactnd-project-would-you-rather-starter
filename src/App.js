@@ -1,5 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './containers/Home';
+import NewQuestion from './containers/NewQuestion';
+import LeaderBoard from './containers/LeaderBoard';
+import Results from './containers/Results';
+import Answer from './containers/Answer';
 import './App.css';
 
 function App() {
@@ -23,17 +28,19 @@ function App() {
 
       <Switch>
         <Route path="/leader-board">
-          Rank by score (answered + created questions)
+          <LeaderBoard />
         </Route>
         <Route path="/new-question">
-          Add a new question :D
+          <NewQuestion />
+        </Route>
+        <Route path="/answer/:id">
+          <Answer />
         </Route>
         <Route path="/question/:id">
-          Add answer to a question
-          if the question is answered, show percentage table
+          <Results />
         </Route>
         <Route path="/">
-          If the user is logged in, show the home (answered and unanswered questions)
+          <Home />
         </Route>
       </Switch>
     </Router>
