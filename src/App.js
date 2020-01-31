@@ -5,26 +5,25 @@ import NewQuestion from './containers/NewQuestion';
 import LeaderBoard from './containers/LeaderBoard';
 import Results from './containers/Results';
 import Answer from './containers/Answer';
+import * as styles from './appStyles';
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/new-question">New Question</Link>
-            </li>
-            <li>
-              <Link to="/leader-board">Leader Board</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <nav className={styles.navClass}>
+        <ul className={styles.menuClass}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/new-question">New Question</Link>
+          </li>
+          <li>
+            <Link to="/leader-board">Leader Board</Link>
+          </li>
+        </ul>
+      </nav>
 
       <Switch>
         <Route path="/leader-board">

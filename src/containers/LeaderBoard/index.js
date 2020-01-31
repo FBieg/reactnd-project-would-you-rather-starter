@@ -1,14 +1,16 @@
 import React from 'react';
+import * as styles from './styles';
 
 const LeaderBoard = () => (
   <div>
-    <ul>
+    <ul className={styles.leaderBoardClass}>
       <li>
-        <div>
-          <span>Logo</span>
+        <div className={styles.userCardClass}>
+          <span className={styles.cardLogoClass}>★</span>
           <div>
             <img
-              src="https://www.ctvalleybrewing.com/wp-content/uploads/2017/04/avatar-placeholder.png"
+              src="https://www.misemacau.org/wp-content/uploads/2015/11/avatar-placeholder-01-300x250.png"
+              className={styles.userImage}
               alt="user"
             />
           </div>
