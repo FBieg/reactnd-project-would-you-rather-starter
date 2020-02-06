@@ -13,14 +13,14 @@ function App() {
     <Router>
       <nav className={styles.navClass}>
         <ul className={styles.menuClass}>
-          <li>
-            <Link to="/">Home</Link>
+          <li className={styles.listItem}>
+            <Link to="/"><span>Home</span></Link>
           </li>
-          <li>
-            <Link to="/new-question">New Question</Link>
+          <li className={styles.listItem}>
+            <Link to="/new-question"><span>New Question</span></Link>
           </li>
-          <li>
-            <Link to="/leader-board">Leader Board</Link>
+          <li className={styles.listItem}>
+            <Link to="/leader-board"><span>Leader Board</span></Link>
           </li>
         </ul>
       </nav>
