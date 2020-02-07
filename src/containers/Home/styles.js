@@ -1,4 +1,5 @@
 import { css } from 'emotion';
+import { greenBase } from '../../shared/colors';
 
 export const contentWrapper = css`
     margin: 10px auto;
@@ -25,7 +26,7 @@ export const tabsContainer = css`
         }
 
         &.active {
-            color: green;
+            color: ${greenBase};
             background: #e0e0e0;
         }
     }

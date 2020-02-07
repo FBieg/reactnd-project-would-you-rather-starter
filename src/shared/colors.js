@@ -1,4 +1,4 @@
-export const greenBase = '#76aba0';
+export const greenBase = '#3ecea7';
 
 export const grayBase = '#f9f7f9';
 

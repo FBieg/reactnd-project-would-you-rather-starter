@@ -3,6 +3,8 @@ import * as colors from './shared/colors';
 
 export const navClass = css`
   border-bottom: 2px solid ${colors.greenBase};
+  display: flex;
+  justify-content: space-around;
 `;
 
 export const listItem = css`
@@ -14,6 +16,23 @@ export const menuClass = css`
   display: flex;
   position: relative;
   margin: 10px 0 0 0;
+
+  &.login {
+    align-items: center;
+    padding-bottom: 10px;
+    background-color: white;
+
+    img {
+      width: 3rem;
+    }
+
+    button {
+      border: none;
+      font-size: 15px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
 
   a {
     color: black;

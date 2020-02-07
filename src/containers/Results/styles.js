@@ -1,4 +1,5 @@
 import { css } from 'emotion';
+import { greenBase } from '../../shared/colors';
 
 export const cardContainer = css`
   border: 2px solid #ebebeb;
@@ -50,8 +51,8 @@ export const cardInfo = css`
 export const button = css`
   width: 100%;
   padding: 7px;
-  border: 1px solid green;
-  color: green;
+  border: 1px solid ${greenBase};
+  color: ${greenBase};
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
@@ -62,21 +63,21 @@ export const button = css`
   &:hover {
     color: white;
     border-color: white;
-    background: green;
+    background: ${greenBase};
     transition: all 0.3s;
   }
 `;
 
 export const resultQuestion = css`
   background: #007f804f;
-  border: 1px solid green;
+  border: 1px solid ${greenBase};
   padding: 10px;
 `;
 
 export const question = css`
   margin: 0;
   margin-bottom: 10px;
-  color: green;
+  color: black;
 `;
 
 export const percentBar = css`
@@ -85,7 +86,7 @@ export const percentBar = css`
 `;
 
 export const percent = css`
-  background: green;
+  background: ${greenBase};
   color: white;
   display: inline-block;
   border-radius: 5px;
