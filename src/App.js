@@ -21,12 +21,12 @@ function App() {
             </Link>
           </li>
           <li className={styles.listItem}>
-            <Link to="/new-question">
+            <Link to="/add">
               <span>New Question</span>
             </Link>
           </li>
           <li className={styles.listItem}>
-            <Link to="/leader-board">
+            <Link to="/leaderboard">
               <span>Leader Board</span>
             </Link>
           </li>
@@ -47,10 +47,10 @@ function App() {
       </nav>
 
       <Switch>
-        <Route path="/leader-board">
+        <Route path="/leaderboard">
           <LeaderBoard />
         </Route>
-        <Route path="/new-question">
+        <Route path="/add">
           <NewQuestion />
         </Route>
         <Route path="/answer/:id">
