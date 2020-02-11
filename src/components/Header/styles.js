@@ -1,5 +1,5 @@
 import { css } from 'emotion';
-import * as colors from './shared/colors';
+import * as colors from '../../shared/colors';
 
 export const navClass = css`
   border-bottom: 2px solid ${colors.greenBase};

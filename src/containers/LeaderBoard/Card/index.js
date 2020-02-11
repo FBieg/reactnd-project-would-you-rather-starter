@@ -15,14 +15,20 @@ const Card = () => (
     <div>
       <h2>Sarah Edo</h2>
       <table>
-        <tr>
-          <td>Answered questions: </td>
-          <td><b>3</b></td>
-        </tr>
-        <tr>
-          <td>Created questions: </td>
-          <td><b>2</b></td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Answered questions: </td>
+            <td>
+              <b>3</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Created questions: </td>
+            <td>
+              <b>2</b>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
 
