@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as styles from './styles';
 
-const Card = () => (
+const Card = ({ data: { author, optionOne, optionTwo } }) => {
+  
+  return (
   <div className={styles.cardContainer}>
-    <h2 className={styles.cardTitle}>Sarah Edo ask</h2>
+    <h2 className={styles.cardTitle}>{author}</h2>
     <div className={styles.cardContent}>
       <picture className={styles.avatar}>
         <img
@@ -13,11 +16,19 @@ const Card = () => (
       </picture>
       <div className={styles.cardInfo}>
         <h3>Would you rather</h3>
-        <p>...a..</p>
-        <button className={styles.button} type="button">View Pull</button>
+        <div>
+          <span>{`${optionOne.text.substring(0, 25)} ...`}</span>
+        </div>
+        <div>
+          <span>{`${optionTwo.text.substring(0, 25)} ...`}</span>
+        </div>
+        <Link to="question/s">
+          <button className={styles.button} type="button">View Pull</button>
+        </Link>
       </div>
     </div>
   </div>
 );
+}
 
 export default Card;
