@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { cx } from 'emotion';
-import { _saveQuestion } from '../../_DATA';
 import { mapStateToProps, mapDispatchToProps } from '../../Store';
 import * as styles from './styles';
 
-const NewQuestion = ({ user }) => {
+const NewQuestion = ({ user, saveQuestion, fetchQuestions }) => {
   const history = useHistory();
   const [optionOneText, setOptionOne] = useState('');
   const [optionTwoText, setOptionTwo] = useState('');
@@ -19,12 +18,10 @@ const NewQuestion = ({ user }) => {
     if (optionOneText.length >= 1 && optionTwoText.length >= 1 && optionOneText !== optionTwoText) {
       setStatus({ isLoading: true });
 
-      _saveQuestion({
-        author: user.data.id,
-        optionOneText,
-        optionTwoText,
-      }).then(({ id }) => {
-        history.push(`/question/${id}`);
+      saveQuestion(user.data.id, optionOneText, optionTwoText).then(({ id }) => {
+        fetchQuestions().then(() => {
+          history.push(`/question/${id}`);
+        });
       });
     } else {
       setStatus({

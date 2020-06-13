@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../../Store';
-import { _getQuestionById, _saveQuestionAnswer } from '../../_DATA';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { cx } from 'emotion';
 import * as styles from './styles';
 
-const Answer = ({ user }) => {
-  const [question, setQuestion] = useState(null);
+const Answer = ({ user, saveQuestionAnswer, fetchQuestions, questions }) => {
   const [selectedAnswer, setAnswer] = useState('optionOne');
-  const isLoading = question === null;
+  const [isLoading, setLoadingStatus] = useState(Boolean(!questions.length));
   const history = useHistory();
-  let { id } = useParams();
+  let { question_id } = useParams();
+
+  const question = questions.find(({ id }) => question_id === id);
 
   const { author, optionOne = {}, optionTwo = {} } = question || {};
   const optionOneData = {
@@ -25,27 +27,29 @@ const Answer = ({ user }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    _saveQuestionAnswer({ authedUser: user.data.id, qid: id, answer: selectedAnswer }).then(() => {
-      history.push(`/question/${id}`);
+    setLoadingStatus(true);
+    saveQuestionAnswer(user.data.id, question_id, selectedAnswer).then(() => {
+      fetchQuestions().then(() => {
+        history.push(`/question/${question_id}`);
+      });
     });
   };
 
   useEffect(() => {
-    _getQuestionById(id)
-      .then((data) => {
-        setQuestion(data);
-      })
-      .catch((data) => {
-        setQuestion(data);
-      });
-  }, [id]);
+    if (!questions.length) {
+      fetchQuestions().then(() => setLoadingStatus(false));
+    }
+  }, [question_id, fetchQuestions, questions.length]);
 
   if (isLoading) {
-    return <div className={styles.cardContainer}>Loading...</div>;
+    return (
+      <div className={cx(styles.cardContainer, 'spinner')}>
+        <ClipLoader />
+      </div>
+    );
   }
 
-  if (question.err) {
+  if (!question) {
     return <div className={styles.cardContainer}>Sorry, this poll does not exist.</div>;
   }
 

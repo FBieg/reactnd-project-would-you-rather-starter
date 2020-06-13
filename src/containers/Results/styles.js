@@ -5,6 +5,11 @@ export const cardContainer = css`
   border-radius: 5px;
   margin: 10px auto;
   max-width: 420px;
+
+  &.spinner {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const cardTitle = css`

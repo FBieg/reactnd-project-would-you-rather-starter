@@ -8,6 +8,10 @@ export const cardContainer = css`
   max-width: 500px;
   display: flex;
   flex-direction: column;
+
+  &.spinner {
+    align-items: center;
+  }
 `;
 
 export const cardTitle = css`

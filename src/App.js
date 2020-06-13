@@ -25,10 +25,10 @@ function App({ user }) {
             <Route exact path="/add">
               <NewQuestion />
             </Route>
-            <Route path="/answer/:id">
+            <Route path="/answer/:question_id">
               <Answer />
             </Route>
-            <Route path="/question/:id">
+            <Route path="/question/:question_id">
               <Results />
             </Route>
             <Route exact path="/home">

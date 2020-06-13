@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { _getQuestions, _getUsers } from '../_DATA';
+import { _getQuestions, _saveQuestionAnswer, _saveQuestion, _getUsers } from '../_DATA';
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 
@@ -63,6 +63,16 @@ export const mapDispatchToProps = (dispatch) => {
       ),
     fetchUsers: () =>
       _getUsers().then((users) => dispatch({ type: 'SET_USER_LIST', data: Object.values(users) })),
+
+    saveQuestionAnswer: (userId, questionId, answer) =>
+      _saveQuestionAnswer({ authedUser: userId, qid: questionId, answer }),
+
+    saveQuestion: (author, optionOneText, optionTwoText) =>
+      _saveQuestion({
+        author,
+        optionOneText,
+        optionTwoText,
+      }),
   };
 };
 

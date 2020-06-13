@@ -17,12 +17,16 @@ const isAnswered = ({ optionOne, optionTwo }, { id }) =>
 
 const Home = ({ user, questions, fetchQuestions }) => {
   const [unanswered, setUnanswered] = useState(true);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const questionList = questions.filter((data) => unanswered === !isAnswered(data, user.data));
+  const [isLoading, setLoadingStatus] = useState(Boolean(!questions.length));
+  const questionList = questions
+    .filter((data) => unanswered === !isAnswered(data, user.data))
+    .sort((a, b) => (b.timestamp > a.timestamp ? 1 : -1));
 
   useEffect(() => {
-    fetchQuestions().then(() => setLoadingStatus(false));
-  }, [fetchQuestions]);
+    if (!questions.length) {
+      fetchQuestions().then(() => setLoadingStatus(false));
+    }
+  }, [fetchQuestions, questions.length]);
 
   return (
     <div className={styles.contentWrapper}>
