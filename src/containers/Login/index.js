@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { _getUsers } from '../../_DATA';
 import { mapStateToProps, mapDispatchToProps } from '../../Store';
 import * as styles from './styled';
 import reactLogo from '../../logo.svg';
 
-const Login = props => {
-  const [userList, setUserList] = useState([]);
+const Login = ({ setUserLogged, userList,fetchUsers }) => {
   const [userSelected, setUserSelected] = useState('');
-  const {setUserLogged} = props
-  
-  console.log(props);
 
   useEffect(() => {
-    _getUsers().then(users => setUserList(Object.values(users)));
+    fetchUsers();
   }, []);
 
   const logIn = () => {

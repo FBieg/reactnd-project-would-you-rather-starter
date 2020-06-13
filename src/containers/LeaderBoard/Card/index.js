@@ -1,7 +1,7 @@
 import React from 'react';
 import * as styles from './styles';
 
-const Card = () => (
+const Card = ({ name, answers, questions, score }) => (
   <div className={styles.userCardClass}>
     <span className={styles.cardLogoClass}>★</span>
     <div>
@@ -13,19 +13,19 @@ const Card = () => (
     </div>
 
     <div>
-      <h2>Sarah Edo</h2>
+      <h2>{name}</h2>
       <table>
         <tbody>
           <tr>
             <td>Answered questions: </td>
             <td>
-              <b>3</b>
+              <b>{answers}</b>
             </td>
           </tr>
           <tr>
             <td>Created questions: </td>
             <td>
-              <b>2</b>
+              <b>{questions}</b>
             </td>
           </tr>
         </tbody>
@@ -35,7 +35,7 @@ const Card = () => (
     <div>
       <div className={styles.scoreContainer}>
         <h3>Score</h3>
-        <span>10</span>
+        <span>{score}</span>
       </div>
     </div>
   </div>

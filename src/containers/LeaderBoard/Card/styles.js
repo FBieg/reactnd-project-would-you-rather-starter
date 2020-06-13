@@ -62,5 +62,6 @@ export const scoreContainer = css`
     margin: 13px auto;
     display: block;
     width: 1.1rem;
+    text-align: center;
   }
 `;

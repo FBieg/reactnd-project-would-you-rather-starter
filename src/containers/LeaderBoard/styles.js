@@ -10,3 +10,13 @@ export const leaderBoardClass = css`
     margin: 30px 0;
   }
 `;
+
+export const spinnerContainer = css`
+  display: none;
+  margin: 20px 0;
+
+  &.isLoading {
+    display: flex;
+    justify-content: center;
+  }
+`;

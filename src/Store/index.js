@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { _getQuestions, _saveQuestionAnswer } from '../_DATA';
+import { _getQuestions, _saveQuestionAnswer, _getUsers } from '../_DATA';
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 
@@ -9,10 +9,16 @@ const initialState = {
     data: userData || {},
   },
   questions: [],
+  userList: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_USER_LIST':
+      return {
+        ...state,
+        userList: action.data,
+      };
     case 'SET_USER_DATA':
       return {
         ...state,
@@ -33,10 +39,11 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export const mapStateToProps = ({ user, questions }) => {
+export const mapStateToProps = ({ user, questions, userList }) => {
   return {
     user,
     questions,
+    userList,
   };
 };
 
@@ -51,9 +58,11 @@ export const mapDispatchToProps = (dispatch) => {
       dispatch({ type: 'LOG_OUT' });
     },
     fetchQuestions: () =>
-      _getQuestions().then((users) =>
-        dispatch({ type: 'SET_QUESTIONS', data: Object.values(users) })
+      _getQuestions().then((questions) =>
+        dispatch({ type: 'SET_QUESTIONS', data: Object.values(questions) })
       ),
+    fetchUsers: () =>
+      _getUsers().then((users) => dispatch({ type: 'SET_USER_LIST', data: Object.values(users) })),
   };
 };
 
