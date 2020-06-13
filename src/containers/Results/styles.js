@@ -15,7 +15,6 @@ export const cardTitle = css`
 
 export const cardContent = css`
   display: flex;
-  height: 150px;
   padding: 10px;
   border-top: 2px solid #ebebeb;
 `;

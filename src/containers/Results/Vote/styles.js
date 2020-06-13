@@ -22,9 +22,14 @@ export const button = css`
 `;
 
 export const resultQuestion = css`
-  background: #007f804f;
   border: 1px solid ${greenBase};
   padding: 10px;
+  margin-top: 15px;
+  position: relative;
+
+  &.isChosen {
+    background: #007f804f;
+  }
 `;
 
 export const question = css`
@@ -56,7 +61,6 @@ export const average = css`
 export const yourVote = css`
   color: white;
   font-weight: bold;
-  display: block;
   background: gold;
   width: 45px;
   height: 45px;
@@ -68,6 +72,11 @@ export const yourVote = css`
   font-size: 12px;
   border: 1px dashed #ebebeb;
   position: absolute;
-  top: 30px;
+  top: -15px;
   right: -10px;
+  display: none;
+
+  .isChosen & {
+    display: block;
+  }
 `;
