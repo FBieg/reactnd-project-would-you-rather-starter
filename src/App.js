@@ -19,10 +19,10 @@ function App({ user }) {
           <Header />
 
           <Switch>
-            <Route path="/leaderboard">
+            <Route exact path="/leaderboard">
               <LeaderBoard />
             </Route>
-            <Route path="/add">
+            <Route exact path="/add">
               <NewQuestion />
             </Route>
             <Route path="/answer/:id">
@@ -31,7 +31,7 @@ function App({ user }) {
             <Route path="/question/:id">
               <Results />
             </Route>
-            <Route path="/home">
+            <Route exact path="/home">
               <Home />
             </Route>
             <Route path="/">
@@ -41,13 +41,12 @@ function App({ user }) {
         </Fragment>
       ) : (
         <Switch>
-
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/">
-          <Redirect to="/login" />
-        </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <Redirect to="/login" />
+          </Route>
         </Switch>
       )}
     </Router>
