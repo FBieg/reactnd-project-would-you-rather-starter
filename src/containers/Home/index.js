@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
-import { _getQuestions } from '../../_DATA';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../../Store';
 import * as styles from './styles';
@@ -15,15 +14,12 @@ import { cx } from 'emotion';
 const isAnswered = ({ optionOne, optionTwo }, { id }) =>
   [...optionOne.votes, ...optionTwo.votes].includes(id);
 
-const Home = ({ user }) => {
+const Home = ({ user, questions, fetchQuestions }) => {
   const [unanswered, setUnanswered] = useState(true);
-  const [questionList, setQuestionList] = useState([]);
 
   useEffect(() => {
-    _getQuestions().then((users) => setQuestionList(Object.values(users)));
+    fetchQuestions();
   }, []);
-
-  console.log(questionList);
 
   return (
     <div className={styles.contentWrapper}>
@@ -36,7 +32,7 @@ const Home = ({ user }) => {
         </button>
       </div>
       <ul className={styles.cardsContainer}>
-        {questionList.map(
+        {questions.map(
           (data) =>
             unanswered === !isAnswered(data, user.data) && (
               <li key={data.id}>

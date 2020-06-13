@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import { _getQuestions } from '../_DATA';
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 
@@ -7,7 +8,7 @@ const initialState = {
     isLogged: Boolean(userData),
     data: userData || {},
   },
-  questions: {},
+  questions: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -32,7 +33,7 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export const mapStateToProps = ({ user, questions, unanswered }) => {
+export const mapStateToProps = ({ user, questions }) => {
   return {
     user,
     questions,
@@ -48,6 +49,11 @@ export const mapDispatchToProps = (dispatch) => {
     userLogout: () => {
       localStorage.removeItem('userData');
       dispatch({ type: 'LOG_OUT' });
+    },
+    fetchQuestions: () => {
+      _getQuestions().then((users) =>
+        dispatch({ type: 'SET_QUESTIONS', data: Object.values(users) })
+      );
     },
   };
 };
