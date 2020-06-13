@@ -7,7 +7,7 @@ import * as styles from './styles';
 const Vote = ({ option, totalAnswers, user }) => {
   const userID = user.data.id;
   const votes = option.votes.length;
-  const percent = (100 * votes) / totalAnswers;
+  const percent = parseInt((100 * votes) / totalAnswers);
 
   return (
     <div className={cx(styles.resultQuestion, { isChosen: option.votes.includes(userID) })}>

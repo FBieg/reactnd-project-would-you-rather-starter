@@ -36,7 +36,7 @@ const Home = ({ user, questions, fetchQuestions }) => {
           (data) =>
             unanswered === !isAnswered(data, user.data) && (
               <li key={data.id}>
-                <Card data={data} />
+                <Card data={data} isAnswered={isAnswered(data, user.data)} />
               </li>
             )
         )}

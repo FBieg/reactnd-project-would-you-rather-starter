@@ -57,6 +57,7 @@ export const formContainer = css`
 
     label {
       margin-bottom: 5px;
+      cursor: pointer;
     }
   }
 `;
