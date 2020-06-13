@@ -36,6 +36,7 @@ export const question = css`
   margin: 0;
   margin-bottom: 10px;
   color: black;
+  word-break: break-all;
 `;
 
 export const percentBar = css`

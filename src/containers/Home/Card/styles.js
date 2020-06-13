@@ -11,6 +11,12 @@ export const cardTitle = css`
   background: #f7f7f7;
   padding: 10px;
   margin: 0;
+  font-size: 22px;
+
+  span {
+    color: gray;
+    font-size: 18px;
+  }
 `;
 
 export const cardContent = css`

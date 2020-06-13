@@ -41,7 +41,11 @@ const Home = ({ user, questions, fetchQuestions }) => {
           (data) =>
             unanswered === !isAnswered(data, user.data) && (
               <li key={data.id}>
-                <Card data={data} isAnswered={isAnswered(data, user.data)} />
+                <Card
+                  data={data}
+                  isAnswered={isAnswered(data, user.data)}
+                  createdByUser={data.author === user.data.id}
+                />
               </li>
             )
         )}

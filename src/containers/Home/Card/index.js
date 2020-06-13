@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as styles from './styles';
 
-const Card = ({ data: { id, author, optionOne, optionTwo }, isAnswered }) => {
+const Card = ({ data: { id, author, optionOne, optionTwo }, isAnswered, createdByUser }) => {
   return (
     <div className={styles.cardContainer}>
-      <h2 className={styles.cardTitle}>{author}</h2>
+      <h2 className={styles.cardTitle}>
+        {author} {createdByUser && <span>(You)</span>}
+      </h2>
       <div className={styles.cardContent}>
         <picture className={styles.avatar}>
           <img

@@ -30,6 +30,12 @@ export const inputClass = css`
   margin: 5px auto;
 `;
 
+export const error = css`
+  color: #f34646;
+  margin: 5px auto;
+  width: 90%;
+`;
+
 export const divisorClass = css`
   font-weight: bold;
   text-align: center;
@@ -67,16 +73,26 @@ export const buttonClass = css`
   cursor: pointer;
   transition: all 0.3s;
   font-weight: bold;
-  color: white;
-  border-color: white;
-  background: ${greenBase};
   margin: 20px auto;
+  background-color: white;
+  border: 1px solid ${greenBase};
+  color: ${greenBase};
 
   &:active,
   &:hover {
-    background-color: white;
-    border: 1px solid ${greenBase};
-    color: ${greenBase};
+    color: white;
+    background: ${greenBase};
+    border-color: white;
     transition: all 0.3s;
+  }
+`;
+
+export const spinnerContainer = css`
+  display: none;
+  margin: 20px 0;
+
+  &.isLoading {
+    display: flex;
+    justify-content: center;
   }
 `;
