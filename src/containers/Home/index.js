@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import { connect } from 'react-redux';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { mapStateToProps, mapDispatchToProps } from '../../Store';
 import * as styles from './styles';
 import { cx } from 'emotion';
@@ -16,9 +17,10 @@ const isAnswered = ({ optionOne, optionTwo }, { id }) =>
 
 const Home = ({ user, questions, fetchQuestions }) => {
   const [unanswered, setUnanswered] = useState(true);
+  const [isLoading, setLoadingStatus] = useState(true);
 
   useEffect(() => {
-    fetchQuestions();
+    fetchQuestions().then(() => setLoadingStatus(false));
   }, []);
 
   return (
@@ -30,6 +32,9 @@ const Home = ({ user, questions, fetchQuestions }) => {
         <button className={cx({ active: !unanswered })} onClick={() => setUnanswered(false)}>
           Answered Questions
         </button>
+      </div>
+      <div className={cx(styles.spinnerContainer, { isLoading })}>
+        <ClipLoader />
       </div>
       <ul className={styles.cardsContainer}>
         {questions.map(

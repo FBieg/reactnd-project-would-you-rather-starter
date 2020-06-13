@@ -40,3 +40,12 @@ export const cardsContainer = css`
     list-style: none;
   }
 `;
+
+export const spinnerContainer = css`
+  display: none;
+
+  &.isLoading {
+    display: flex;
+    justify-content: center;
+  }
+`;

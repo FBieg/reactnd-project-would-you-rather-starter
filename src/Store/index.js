@@ -50,11 +50,10 @@ export const mapDispatchToProps = (dispatch) => {
       localStorage.removeItem('userData');
       dispatch({ type: 'LOG_OUT' });
     },
-    fetchQuestions: () => {
+    fetchQuestions: () =>
       _getQuestions().then((users) =>
         dispatch({ type: 'SET_QUESTIONS', data: Object.values(users) })
-      );
-    },
+      ),
   };
 };
 
