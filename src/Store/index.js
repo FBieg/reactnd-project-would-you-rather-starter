@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-const userData = JSON.parse(localStorage.getItem("userData"));
+const userData = JSON.parse(localStorage.getItem('userData'));
 
 const initialState = {
   user: {
@@ -9,7 +9,6 @@ const initialState = {
   },
   questions: {},
 };
-
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -27,7 +26,7 @@ const rootReducer = (state = initialState, action) => {
         questions: action.data,
       };
     case 'LOG_OUT':
-      return initialState
+      return { ...initialState, user: { ...initialState.user, isLogged: false } };
     default:
       return state;
   }
@@ -40,15 +39,15 @@ export const mapStateToProps = ({ user, questions, unanswered }) => {
   };
 };
 
-export const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = (dispatch) => {
   return {
-    setUserLogged: userData => {
-      localStorage.setItem("userData", JSON.stringify(userData))
+    setUserLogged: (userData) => {
+      localStorage.setItem('userData', JSON.stringify(userData));
       dispatch({ type: 'SET_USER_DATA', data: userData });
     },
     userLogout: () => {
-      localStorage.removeItem("userData")
-      dispatch({type: 'LOG_OUT'})
+      localStorage.removeItem('userData');
+      dispatch({ type: 'LOG_OUT' });
     },
   };
 };

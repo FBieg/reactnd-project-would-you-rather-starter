@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as styles from './styles';
 
-const Card = ({ data: { author, optionOne, optionTwo } }) => {
+const Card = ({ data: { id, author, optionOne, optionTwo } }) => {
   
   return (
   <div className={styles.cardContainer}>
@@ -22,7 +22,7 @@ const Card = ({ data: { author, optionOne, optionTwo } }) => {
         <div>
           <span>{`${optionTwo.text.substring(0, 25)} ...`}</span>
         </div>
-        <Link to="question/s">
+        <Link to={`question/${id}`}>
           <button className={styles.button} type="button">View Pull</button>
         </Link>
       </div>

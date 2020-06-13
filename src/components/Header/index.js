@@ -5,12 +5,8 @@ import { cx } from 'emotion';
 import { Link } from 'react-router-dom';
 import * as styles from './styles';
 
-const Header = props => {
-  const { name, avatarURL } = props.user.data;
-  const {userLogout} = props
-  const logOut = () => {
-    userLogout()
-  }
+const Header = ({ userLogout, user }) => {
+  const { name, avatarURL } = user.data;
 
   return (
     <nav className={styles.navClass}>
@@ -35,13 +31,12 @@ const Header = props => {
       <ul className={cx(styles.menuClass, 'login')}>
         <li className={styles.listItem}>Hello, {name}</li>
         <li className={styles.listItem}>
-          <img
-            src={avatarURL}
-            alt="user"
-          />
+          <img src={avatarURL} alt="user" />
         </li>
         <li className={styles.listItem}>
-          <button type="button" onClick={logOut}>Logout</button>
+          <button type="button" onClick={userLogout}>
+            Logout
+          </button>
         </li>
       </ul>
     </nav>
