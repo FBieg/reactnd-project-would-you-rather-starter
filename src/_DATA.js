@@ -131,6 +131,18 @@ export function _getQuestions () {
   })
 }
 
+export function _getQuestionById (id) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      if(questions[id]) {
+        res(questions[id]);
+      } else {
+        rej({ err: 'Not found' });
+      }
+    }, 300)
+  })
+}
+
 function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
