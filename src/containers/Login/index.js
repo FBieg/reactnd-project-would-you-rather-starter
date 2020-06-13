@@ -9,7 +9,7 @@ const Login = ({ setUserLogged, userList,fetchUsers }) => {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   const logIn = () => {
     if (userSelected) {

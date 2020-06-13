@@ -18,10 +18,11 @@ const isAnswered = ({ optionOne, optionTwo }, { id }) =>
 const Home = ({ user, questions, fetchQuestions }) => {
   const [unanswered, setUnanswered] = useState(true);
   const [isLoading, setLoadingStatus] = useState(true);
+  const questionList = questions.filter((data) => unanswered === !isAnswered(data, user.data));
 
   useEffect(() => {
     fetchQuestions().then(() => setLoadingStatus(false));
-  }, []);
+  }, [fetchQuestions]);
 
   return (
     <div className={styles.contentWrapper}>
@@ -36,19 +37,21 @@ const Home = ({ user, questions, fetchQuestions }) => {
       <div className={cx(styles.spinnerContainer, { isLoading })}>
         <ClipLoader />
       </div>
+      {!isLoading && !Boolean(questionList.length) && (
+        <span>
+          {unanswered ? 'You answered all the polls.' : 'You have not answered any polls.'}
+        </span>
+      )}
       <ul className={styles.cardsContainer}>
-        {questions.map(
-          (data) =>
-            unanswered === !isAnswered(data, user.data) && (
-              <li key={data.id}>
-                <Card
-                  data={data}
-                  isAnswered={isAnswered(data, user.data)}
-                  createdByUser={data.author === user.data.id}
-                />
-              </li>
-            )
-        )}
+        {questionList.map((data) => (
+          <li key={data.id}>
+            <Card
+              data={data}
+              isAnswered={isAnswered(data, user.data)}
+              createdByUser={data.author === user.data.id}
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );

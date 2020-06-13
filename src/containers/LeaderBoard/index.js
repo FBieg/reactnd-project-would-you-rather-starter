@@ -28,7 +28,7 @@ const LeaderBoard = ({ userList, fetchUsers }) => {
     fetchUsers().then(() => {
       setLoadingStatus(false);
     });
-  }, []);
+  }, [fetchUsers]);
 
   return (
     <div>

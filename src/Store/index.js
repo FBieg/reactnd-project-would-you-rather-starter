@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { _getQuestions, _saveQuestionAnswer, _getUsers } from '../_DATA';
+import { _getQuestions, _getUsers } from '../_DATA';
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 
