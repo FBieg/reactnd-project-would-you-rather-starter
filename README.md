@@ -1,10 +1,15 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is a small application that simulates a survey page where the users create each poll and every logged user (including the one who created it) can vote for one of the options given.
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+## TL;DR
+
+To get started developing right away:
+
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
 
 ## Data
 
@@ -46,10 +51,11 @@ Voting options are attached to questions. They include:
 | votes             | Array | A list that contains the id of each user who voted for that option|
 | text                | String | The text of the option |
 
-Your code will talk to the database via 4 methods:
+Your code will talk to the database via 5 methods:
 
 * `_getUsers()`
 * `_getQuestions()`
+* `_getQuestionById()`
 * `_saveQuestion(question)`
 * `_saveQuestionAnswer(object)`
 
@@ -63,7 +69,12 @@ Your code will talk to the database via 4 methods:
 *Description*: Get all of the existing questions from the database.  
 *Return Value*: Object where the key is the question’s id and the value is the question object.
 
-3) `_saveQuestion(question)` Method
+3) `_getQuestionById()` Method
+
+*Description*: Get a question from the database based on a given ID 
+*Return Value*: Question object.
+
+4) `_saveQuestion(question)` Method
 
 *Description*: Save the polling question in the database.  
 *Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
@@ -84,7 +95,7 @@ Your code will talk to the database via 4 methods:
 | optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
 |timestamp|String | The time when the question was created|
 
-4) `_saveQuestionAnswer(object)` Method
+5) `_saveQuestionAnswer(object)` Method
 
 *Description*: Save the answer to a particular polling question in the database.
 *Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:
@@ -94,7 +105,3 @@ Your code will talk to the database via 4 methods:
 | authedUser | String | The id of the user who answered the question|
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
